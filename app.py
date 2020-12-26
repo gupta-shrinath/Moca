@@ -10,4 +10,5 @@ mongoClient = MongoClient('localhost',33017)
 db = mongoClient['moca']
 
 from meetup import routes 
+from galvanize import routes
 from moca import routes

@@ -7,5 +7,5 @@ def get_kotlin_events():
 
 @app.route('/meetup/javascript/')
 def get_javascript_events():
-    return Meetup().get_paramter_meetups('build-with-code-los-angeles','JavaScript',100002)
+    return Meetup().get_topic_meetups('build-with-code-los-angeles','JavaScript',100002)
 

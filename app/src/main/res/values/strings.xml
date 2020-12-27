@@ -8,10 +8,27 @@
     </string>
 
     <!-- UserAuthActivity  -->
-    <string name="user_auth_page_title">Meetup &amp; Conference Aggregator</string>
+    <string name="user_auth_page_title"> Meetup &amp; Conference Aggregator </string>
     <string name="user_auth_page_subtitle">
         A free tool for you, that brings all your favorite meetups in one place
     </string>
-    <string name="user_auth_page_button_signin">Sign In</string>
+    <string name="user_auth_page_button_signin"> Sign In </string>
+
+    <!-- ChooseTopicsActivity  -->
+    <string name="choose_topics_page_title"> Choose the topics you love the most </string>
+    <string name="choose_topics_page_subtitle"> Find curated content that matters the most to you </string>
+    <string name="topic_android"> Android </string>
+    <string name="topic_ios"> iOS </string>
+    <string name="topic_web"> Web </string>
+    <string name="topic_kotlin"> Kotlin </string>
+    <string name="topic_java"> Java </string>
+    <string name="topic_swift"> Swift </string>
+    <string name="topic_python"> Python </string>
+    <string name="topic_aiml"> AI/ML </string>
+    <string name="topic_react"> React </string>
+    <string name="topic_js"> JS </string>
+    <string name="topic_vue"> Vue </string>
+    <string name="topic_angular"> Angular </string>
+    <string name="choose_topics_page_button"> Take Me In </string>
 
 </resources>

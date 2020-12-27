@@ -5,9 +5,11 @@ class Moca:
     @staticmethod
     def get_topics():
         return jsonify({
-            'kotlin':100001,
+            'Kotlin':100001,
+            'Javascript':100002,
             'Data Science':100003,
             'Web Development' : 100004,
+            'Software Engineering' : 100006,
         }) 
         
     @staticmethod

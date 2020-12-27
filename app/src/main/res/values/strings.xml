@@ -1,3 +1,17 @@
 <resources>
+
     <string name="app_name">Moca</string>
+
+    <!-- Google Sign-in OAuth Client ID -->
+    <string name="web_client_id">
+        1005735982925-sbv91r9l3abe4dss11lcgeq3iud2rhq5.apps.googleusercontent.com
+    </string>
+
+    <!-- UserAuthActivity  -->
+    <string name="user_auth_page_title">Meetup &amp; Conference Aggregator</string>
+    <string name="user_auth_page_subtitle">
+        A free tool for you, that brings all your favorite meetups in one place
+    </string>
+    <string name="user_auth_page_button_signin">Sign In</string>
+
 </resources>

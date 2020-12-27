@@ -44,10 +44,14 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
     // Using Firebase BoM for the Firebase platform
-    // This adds all relevant version numbers for all firebase libraries, implicitly
+    // This implicitly adds all relevant version numbers for all firebase libraries
     implementation platform('com.google.firebase:firebase-bom:26.2.0')
 
     // Firebase Auth and Realtime Database dependencies
     implementation 'com.google.firebase:firebase-auth'
     implementation 'com.google.firebase:firebase-database'
+
+    // Google Play Services dependency
+    implementation 'com.google.android.gms:play-services-auth:19.0.0'
+
 }

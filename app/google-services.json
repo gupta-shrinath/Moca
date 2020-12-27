@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "1005735982925-aa589ef2ikhogommtgtmmh1dqprh23uh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.collabapps.moca",
+            "certificate_hash": "a64f9190c65142fdef22a3d430323559c1595d03"
+          }
+        },
+        {
           "client_id": "1005735982925-sbv91r9l3abe4dss11lcgeq3iud2rhq5.apps.googleusercontent.com",
           "client_type": 3
         }

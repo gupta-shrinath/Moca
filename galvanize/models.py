@@ -29,8 +29,6 @@ class Galvanize:
                         topic_list = result.previous_sibling.find_all('p',{'class':'lead'})
                         for topic in topic_list:
                             event_topic.append(topic.getText())
-        print(len(eventbrite_events))
-        print(len(event_topic))
         return eventbrite_events,event_topic     
 
     # Get id of all eventbrite url
@@ -47,6 +45,7 @@ class Galvanize:
         urls,topics = Galvanize.get_galvanize_events()
         event_ids = Galvanize.get_eventbrite_event_ids(urls)
         topic_index = 0
+        event_count = 0
         for event_id in event_ids:
             url = 'https://www.eventbriteapi.com/v3/events/'+event_id+'/?expand=organizer'
             PERSONAL_OAUTH_TOKEN = "W43MZVDX2EYFUZENUUHX"
@@ -85,6 +84,11 @@ class Galvanize:
             if topics[topic_index] == 'Web Development':
                 event['topic_id'] = 100004
             topic_index = topic_index + 1
-            db.events.insert_one(event)
-        return {'status':'sucess'}
+            if not db.events.find_one({'platform_link':response['url']}):
+                db.events.insert_one(event)
+                event_count = event_count + 1
+        if event_count != 0:
+                return {'status': event_count + ' events added'}
+        else:
+            return {'status':'0 events added'}
 

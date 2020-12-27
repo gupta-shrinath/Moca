@@ -8,11 +8,11 @@ class Meetup:
         response = requests.get(url)
         if not response.json():
             error = {
-                "error" : "There is no upcoming meetup for Organization" + group_name
+                "error" : "There is no upcoming meetup for Organization " + group_name
             }
             return jsonify(error)
         else:
-            event_list = []
+            event_count = 0
             for meetup in response.json():
                 event = {
                     '_id':uuid.uuid4().hex,
@@ -36,12 +36,16 @@ class Meetup:
                         'latitude':meetup['venue']['lat'],
                         'longitude':meetup['venue']['lon']
                     }
-                event_list.append(event)
-            db.events.insert_many(event_list)
-            return jsonify({'status':'success'})    
+                if not db.events.find_one({'platform_link':meetup['link']}):
+                    db.events.insert(event)
+                    event_count = event_count + 1
+            if event_count != 0:
+                return jsonify({'status': event_count + ' events added'})
+            else:
+                return jsonify({'status':'0 events added'})
 
     @staticmethod
-    def get_paramter_meetups(group_name,topic_name,id):
+    def get_topic_meetups(group_name,topic_name,id):
         # Add featured_photo to field paramter to get meetup photo
         url = "https://api.meetup.com/" + group_name + "/events?page=20&fields=group_key_photo" 
         response = requests.get(url)
@@ -51,7 +55,7 @@ class Meetup:
             }
             return jsonify(error)
         else:
-            event_list = []
+            event_count = 0
             for meetup in response.json():                    
                 event = {
                     '_id':uuid.uuid4().hex,
@@ -81,6 +85,10 @@ class Meetup:
                         'latitude':meetup['venue']['lat'],
                         'longitude':meetup['venue']['lon']
                     }
-                event_list.append(event)
-            db.events.insert_many(event_list)
-            return jsonify({'status':'success'})    
+                if not db.events.find_one({'platform_link':meetup['link']}):
+                    db.events.insert(event)
+                    event_count = event_count + 1
+            if event_count != 0:
+                return jsonify({'status': event_count + ' events added'})
+            else:
+                return jsonify({'status':'0 events added'})

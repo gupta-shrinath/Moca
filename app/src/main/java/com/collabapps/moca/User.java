@@ -7,10 +7,10 @@ public class User {
     private String id;
     private String fullname;
     private String email;
-    private boolean isFirstTimeUser;
     private List<String> favTopics;
 
     public User(String id, String fullname, String email) {
+        this.id = id;
         this.fullname = fullname;
         this.email = email;
     }
@@ -37,10 +37,6 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public boolean isFirstTimeUser() {
-        return isFirstTimeUser;
     }
 
     public List<String> getFavTopics() {

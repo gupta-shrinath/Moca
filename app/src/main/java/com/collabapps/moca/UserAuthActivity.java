@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -16,19 +17,24 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 public class UserAuthActivity extends AppCompatActivity {
 
+    private ProgressBar progressBar;
+    private GoogleSignInClient mGoogleSignInClient;
     private GoogleSignInAccount account;
     private DatabaseReference mDb = FirebaseDatabase.getInstance().getReference(DATABASE_NAME);
 
     private static final int GOOGLE_SIGN_IN = 1;
     public static final String DATABASE_NAME = "users";
-
-    private GoogleSignInClient mGoogleSignInClient;
 
     public static Intent getIntentToNavigate(Context context) {
         Intent userAuthActivityIntent = new Intent(context, UserAuthActivity.class);
@@ -41,13 +47,14 @@ public class UserAuthActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_auth);
 
+        initProgressBar();
         initGoogleSignInOptions();
         setupGoogleSignInButton();
     }
 
     private void initGoogleSignInOptions() {
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestServerAuthCode(getString(R.string.web_client_id))
+                .requestIdToken(getString(R.string.web_client_id))
                 .requestEmail()
                 .build();
 
@@ -80,21 +87,45 @@ public class UserAuthActivity extends AppCompatActivity {
             account = completedTask.getResult(ApiException.class);
 
             if (account != null) {
-                persistUserDataToOnlineDatabase(account);
+                User user = new User(account.getId(), account.getDisplayName(), account.getEmail());
+                handleUserDataPersistence(user);
             }
         } catch (ApiException e) {
             toastErrorMessageWithStatusCode(e.getStatusCode());
         }
     }
 
-    private void persistUserDataToOnlineDatabase(GoogleSignInAccount account) {
-        User user = new User(account.getId(), account.getDisplayName(), account.getEmail());
-        mDb.child(user.getId()).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+    private void handleUserDataPersistence(User user) {
+        showProgressBar();
+
+        Query userCheckQuery = mDb.child(user.getId());
+        userCheckQuery.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                navigateToChooseTopicsActivity();
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                hideProgressBar();
+                if (!snapshot.exists()) {
+                    persistUserDataToOnlineDatabase(user);
+                } else {
+                    handleUserNavigation(user.getId());
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
+    }
+
+    private void persistUserDataToOnlineDatabase(User user) {
+        mDb.child(user.getId()).setValue(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                handleUserNavigation(user.getId());
+            }
+        });
+
+        hideProgressBar();
     }
 
     private void navigateToChooseTopicsActivity() {
@@ -102,7 +133,45 @@ public class UserAuthActivity extends AppCompatActivity {
         startActivity(chooseTopicsActivityIntent);
     }
 
+    private void navigateToHomeActivity() {
+        Intent homeActivityIntent = HomeActivity.getIntentToNavigate(this);
+        startActivity(homeActivityIntent);
+    }
 
+    private void handleUserNavigation(String googleAccountId) {
+        showProgressBar();
+
+        Query isFirstTimeQuery = mDb.child(googleAccountId).child("favTopics");
+        isFirstTimeQuery.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                hideProgressBar();
+
+                if (!snapshot.exists()) {
+                    Toast.makeText(UserAuthActivity.this, "User is new", Toast.LENGTH_SHORT).show();
+                    navigateToChooseTopicsActivity();
+                } else {
+                    Toast.makeText(UserAuthActivity.this, "User already exists", Toast.LENGTH_SHORT).show();
+                    navigateToHomeActivity();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                hideProgressBar();
+            }
+        });
+    }
+
+    private void initProgressBar() {
+        progressBar = findViewById(R.id.progress_bar);
+    }
+    private void showProgressBar() {
+        progressBar.setVisibility(View.VISIBLE);
+    }
+    private void hideProgressBar() {
+        progressBar.setVisibility(View.GONE);
+    }
 
     private void toastErrorMessageWithStatusCode(int exceptionStatusCode) {
         Toast.makeText(this, "signInResult:failed code=" + exceptionStatusCode, Toast.LENGTH_SHORT).show();

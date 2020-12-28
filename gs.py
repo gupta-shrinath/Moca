@@ -16,3 +16,5 @@ titles = [ title.text for title in titles]
 
 date_time = soup.find_all("li", class_="theme_color")[:3]
 date_time = [ dt.text for dt in date_time]
+
+print(titles, reg_links, date_time)

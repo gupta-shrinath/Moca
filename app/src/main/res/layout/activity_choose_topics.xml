@@ -1,9 +1,173 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ChooseTopicsActivity">
+
+    <TextView
+        android:id="@+id/choose_topics_page_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/choose_topics_page_title"
+        android:textColor="@color/black"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/choose_topics_page_subtitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/choose_topics_page_subtitle"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/choose_topics_page_title" />
+
+    <Button
+        android:id="@+id/submit_topics_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/choose_topics_page_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/topics_chipGroup"
+        style="@style/Widget.MaterialComponents.Chip.Filter"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/submit_topics_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/choose_topics_page_subtitle"
+        app:selectionRequired="true">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/android_chip"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            app:chipBackgroundColor="@drawable/chip_state_bg_color"
+            android:textColor="@drawable/chip_state_text_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/topic_android" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/ios_chip"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            app:chipBackgroundColor="@drawable/chip_state_bg_color"
+            android:textColor="@drawable/chip_state_text_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/topic_ios" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/web_chip"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            app:chipBackgroundColor="@drawable/chip_state_bg_color"
+            android:textColor="@drawable/chip_state_text_color"
+            tools:checked="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/topic_web" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/kotlin_chip"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            app:chipBackgroundColor="@drawable/chip_state_bg_color"
+            android:textColor="@drawable/chip_state_text_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/topic_kotlin" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/java_chip"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            app:chipBackgroundColor="@drawable/chip_state_bg_color"
+            android:textColor="@drawable/chip_state_text_color"
+            tools:checked="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/topic_java" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/swift_chip"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            app:chipBackgroundColor="@drawable/chip_state_bg_color"
+            android:textColor="@drawable/chip_state_text_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/topic_swift" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/python_chip"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            app:chipBackgroundColor="@drawable/chip_state_bg_color"
+            android:textColor="@drawable/chip_state_text_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/topic_python" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/aiml_chip"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            app:chipBackgroundColor="@drawable/chip_state_bg_color"
+            android:textColor="@drawable/chip_state_text_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/topic_aiml" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/react_chip"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            app:chipBackgroundColor="@drawable/chip_state_bg_color"
+            android:textColor="@drawable/chip_state_text_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/topic_react" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/js_chip"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            app:chipBackgroundColor="@drawable/chip_state_bg_color"
+            android:textColor="@drawable/chip_state_text_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/topic_js" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/vue_chip"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            app:chipBackgroundColor="@drawable/chip_state_bg_color"
+            android:textColor="@drawable/chip_state_text_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/topic_vue" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/angular_chip"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            app:chipBackgroundColor="@drawable/chip_state_bg_color"
+            android:textColor="@drawable/chip_state_text_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/topic_angular" />
+
+    </com.google.android.material.chip.ChipGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

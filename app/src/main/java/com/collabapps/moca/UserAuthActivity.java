@@ -1,5 +1,6 @@
 package com.collabapps.moca;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,12 +15,20 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class UserAuthActivity extends AppCompatActivity {
 
+    private GoogleSignInAccount account;
+    private DatabaseReference mDb = FirebaseDatabase.getInstance().getReference(DATABASE_NAME);
+
     private static final int GOOGLE_SIGN_IN = 1;
-    GoogleSignInClient mGoogleSignInClient;
+    public static final String DATABASE_NAME = "users";
+
+    private GoogleSignInClient mGoogleSignInClient;
 
     public static Intent getIntentToNavigate(Context context) {
         Intent userAuthActivityIntent = new Intent(context, UserAuthActivity.class);
@@ -68,18 +77,32 @@ public class UserAuthActivity extends AppCompatActivity {
 
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
-            GoogleSignInAccount account = completedTask.getResult(ApiException.class);
+            account = completedTask.getResult(ApiException.class);
 
-            navigateToHomeActivity(account);
+            if (account != null) {
+                persistUserDataToOnlineDatabase(account);
+            }
         } catch (ApiException e) {
             toastErrorMessageWithStatusCode(e.getStatusCode());
         }
     }
 
-    private void navigateToHomeActivity(GoogleSignInAccount account) {
-        Intent homeActivityIntent = HomeActivity.getIntentToNavigate(this, account);
-        startActivity(homeActivityIntent);
+    private void persistUserDataToOnlineDatabase(GoogleSignInAccount account) {
+        User user = new User(account.getId(), account.getDisplayName(), account.getEmail());
+        mDb.child(user.getId()).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                navigateToChooseTopicsActivity();
+            }
+        });
     }
+
+    private void navigateToChooseTopicsActivity() {
+        Intent chooseTopicsActivityIntent = ChooseTopicsActivity.getIntentToNavigate(this, account.getId());
+        startActivity(chooseTopicsActivityIntent);
+    }
+
+
 
     private void toastErrorMessageWithStatusCode(int exceptionStatusCode) {
         Toast.makeText(this, "signInResult:failed code=" + exceptionStatusCode, Toast.LENGTH_SHORT).show();

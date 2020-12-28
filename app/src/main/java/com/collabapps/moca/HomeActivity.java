@@ -18,14 +18,13 @@ import com.google.android.gms.tasks.Task;
 
 public class HomeActivity extends AppCompatActivity {
 
-    public static String HOME_ACTIVITY_EXTRAS_KEY = "home_activity_extra_key";
+    public static final int SIGNOUT_MENU_ITEM = R.id.signout;
 
     private GoogleSignInClient mGoogleSignInClient;
 
-    public static Intent getIntentToNavigate(Context context, GoogleSignInAccount account) {
+    public static Intent getIntentToNavigate(Context context) {
         Intent homeActivityIntent = new Intent(context, HomeActivity.class);
         homeActivityIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        homeActivityIntent.putExtra(HOME_ACTIVITY_EXTRAS_KEY, account);
         return homeActivityIntent;
     }
 
@@ -54,7 +53,7 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.signout:
+            case SIGNOUT_MENU_ITEM:
                 signUserOut();
                 break;
 

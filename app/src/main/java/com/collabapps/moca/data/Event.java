@@ -1,5 +1,9 @@
 package com.collabapps.moca.data;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 public class Event {
 
     private String id;
@@ -7,16 +11,19 @@ public class Event {
     private String eventOrganiserName;
     private String eventDate;
     private String eventLocation;
+    private String eventDesc;
 
     public Event() {
 
     }
 
-    public Event(String eventName, String eventOrganiserName, String eventDate, String eventLocation) {
+    public Event(String id, String eventName, String eventOrganiserName, String eventDate, String eventLocation, String eventDesc) {
+        this.id = id;
         this.eventName = eventName;
         this.eventOrganiserName = eventOrganiserName;
         this.eventDate = eventDate;
         this.eventLocation = eventLocation;
+        this.eventDesc = eventDesc;
     }
 
     public String getId() {
@@ -57,5 +64,19 @@ public class Event {
 
     public void setEventLocation(String eventLocation) {
         this.eventLocation = eventLocation;
+    }
+
+    public String getEventDesc() {
+        return eventDesc;
+    }
+
+    public void setEventDesc(String eventDesc) {
+        this.eventDesc = eventDesc;
+    }
+
+    public boolean isEventLive() {
+        SimpleDateFormat sdf = new SimpleDateFormat("EEE, MMM d, HH:mm");
+        String date = sdf.format(new Date());
+        return eventDate == date;
     }
 }

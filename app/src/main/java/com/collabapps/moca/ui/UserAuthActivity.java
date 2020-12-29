@@ -1,4 +1,4 @@
-package com.collabapps.moca;
+package com.collabapps.moca.ui;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -11,7 +11,8 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.collabapps.moca.ui.ChooseTopicsActivity;
+import com.collabapps.moca.R;
+import com.collabapps.moca.model.User;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;

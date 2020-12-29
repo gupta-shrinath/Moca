@@ -1,4 +1,4 @@
-package com.collabapps.moca;
+package com.collabapps.moca.model;
 
 import java.util.List;
 

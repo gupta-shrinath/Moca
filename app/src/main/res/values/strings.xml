@@ -31,4 +31,12 @@
     <string name="topic_angular"> Angular </string>
     <string name="choose_topics_page_button"> Take Me In </string>
 
+    <!-- Event List Item -->
+    <string name="dummy_event_name">Mastering Kotlin</string>
+    <string name="dummy_event_organiser_name">GDG MAD</string>
+    <string name="dummy_event_date">Sat, Dec 19, 11:00</string>
+    <string name="dummy_event_location">Online, Google Meet</string>
+    <string name="event_date_imageView_contentDesc">event_date_icon</string>
+    <string name="event_location_imageView_contentDesc">event_location_icon</string>
+
 </resources>

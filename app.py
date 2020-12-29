@@ -8,7 +8,7 @@ import time
 app = Flask(__name__)
 
 # MongoDB Config
-mongoClient = MongoClient('localhost',33017)
+mongoClient = MongoClient('mongodb+srv://mocaadmin:7HvziBoPYL2qpFln@cluster0.be0cl.mongodb.net/test')
 db = mongoClient['moca']
 
 from meetup import routes

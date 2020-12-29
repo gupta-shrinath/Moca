@@ -88,7 +88,9 @@ class Galvanize:
                 db.events.insert_one(event)
                 event_count = event_count + 1
         if event_count != 0:
+                print('Galvanize Remote ', {'status': event_count + ' events added'})
                 return {'status': event_count + ' events added'}
         else:
+            print('Galvanize Remote',{'status':'0 events added'})
             return {'status':'0 events added'}
 

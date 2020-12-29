@@ -39,4 +39,13 @@
     <string name="event_date_imageView_contentDesc">event_date_icon</string>
     <string name="event_location_imageView_contentDesc">event_location_icon</string>
 
+    <!-- Tab Layout -->
+    <string name="tab_item_interests">Interests</string>
+    <string name="tab_item_recommended">Recommended</string>
+
+    <!-- Home Activity -->
+    <string name="app_logo_imageView_contentDesc">app_logo</string>
+    <string name="profile_photo_imageView_contentDesc">profile_photo</string>
+    <string name="add_event_fab_contentDesc">add_event_fab</string>
+
 </resources>

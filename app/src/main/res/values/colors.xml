@@ -12,8 +12,8 @@
 
     <!-- Additional app colors -->
     <color name="hyperlink_blue">#4285F4</color>
-    <color name="moca_primary"> #FD697C </color>
-    <color name="moca_primary_dark"> #C53550 </color>
+    <color name="moca_primary"> #C53550 </color>
+    <color name="moca_primary_dark"> #B8334C </color>
     <color name="moca_primary_light"> #FF9BAB </color>
     <color name="moca_accent"> #8BDF8B </color>
 

@@ -10,7 +10,8 @@ class Meetup:
             error = {
                 "error" : "There is no upcoming meetup for Organization " + group_name
             }
-            return jsonify(error)
+            print('Meetup',error)
+            return error
         else:
             event_count = 0
             for meetup in response.json():
@@ -40,6 +41,7 @@ class Meetup:
                     db.events.insert(event)
                     event_count = event_count + 1
             if event_count != 0:
+                print('Meetup', {'status': event_count + ' events added'})
                 return jsonify({'status': event_count + ' events added'})
             else:
                 return jsonify({'status':'0 events added'})
@@ -53,7 +55,8 @@ class Meetup:
             error = {
                 "error" : "There is no upcoming meetup for Organization" + group_name
             }
-            return jsonify(error)
+            print('Meetup',error)
+            return error
         else:
             event_count = 0
             for meetup in response.json():                    
@@ -89,6 +92,8 @@ class Meetup:
                     db.events.insert(event)
                     event_count = event_count + 1
             if event_count != 0:
-                return jsonify({'status': event_count + ' events added'})
+                print('Meetup' , {'status': event_count + ' events added'})
+                return {'status': event_count + ' events added'}
             else:
-                return jsonify({'status':'0 events added'})
+                print('Meetup',{'status':'0 events added'})
+                return {'status':'0 events added'}

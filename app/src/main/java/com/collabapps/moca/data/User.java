@@ -1,4 +1,7 @@
-package com.collabapps.moca.model;
+package com.collabapps.moca.data;
+
+import com.google.firebase.database.Exclude;
+import com.google.firebase.database.PropertyName;
 
 import java.util.List;
 
@@ -7,7 +10,13 @@ public class User {
     private String id;
     private String fullname;
     private String email;
+
+    @PropertyName("fav_topics")
     private List<String> favTopics;
+
+    public User() {
+
+    }
 
     public User(String id, String fullname, String email) {
         this.id = id;
@@ -39,10 +48,12 @@ public class User {
         this.email = email;
     }
 
+    @Exclude
     public List<String> getFavTopics() {
         return favTopics;
     }
 
+    @Exclude
     public void setFavTopics(List<String> favTopics) {
         this.favTopics = favTopics;
     }

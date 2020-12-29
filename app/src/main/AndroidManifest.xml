@@ -11,9 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Moca">
-        <activity android:name=".ui.ChooseTopicsActivity"></activity>
-        <activity android:name=".ui.UserAuthActivity" />
-        <activity android:name=".ui.HomeActivity">
+        <activity android:name=".ChooseTopicsActivity"></activity>
+        <activity android:name=".UserAuthActivity" />
+        <activity android:name=".HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

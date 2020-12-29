@@ -1,4 +1,4 @@
-package com.collabapps.moca.ui;
+package com.collabapps.moca;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -11,8 +11,8 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.collabapps.moca.R;
-import com.collabapps.moca.model.User;
+import com.collabapps.moca.data.User;
+import com.collabapps.moca.util.Constants;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -32,10 +32,9 @@ public class UserAuthActivity extends AppCompatActivity {
     private ProgressBar progressBar;
     private GoogleSignInClient mGoogleSignInClient;
     private GoogleSignInAccount account;
-    private DatabaseReference mDb = FirebaseDatabase.getInstance().getReference(DATABASE_NAME);
+    private DatabaseReference mDb = FirebaseDatabase.getInstance().getReference(Constants.DATABASE_NAME);
 
     private static final int GOOGLE_SIGN_IN = 1;
-    public static final String DATABASE_NAME = "users";
 
     public static Intent getIntentToNavigate(Context context) {
         Intent userAuthActivityIntent = new Intent(context, UserAuthActivity.class);
@@ -142,7 +141,7 @@ public class UserAuthActivity extends AppCompatActivity {
     private void handleUserNavigation(String googleAccountId) {
         showProgressBar();
 
-        Query isFirstTimeQuery = mDb.child(googleAccountId).child("favTopics");
+        Query isFirstTimeQuery = mDb.child(googleAccountId).child(Constants.DATABASE_CHILD_FAV_TOPICS);
         isFirstTimeQuery.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

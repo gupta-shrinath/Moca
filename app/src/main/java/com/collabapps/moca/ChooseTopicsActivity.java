@@ -1,4 +1,4 @@
-package com.collabapps.moca.ui;
+package com.collabapps.moca;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,8 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.collabapps.moca.Constants;
-import com.collabapps.moca.R;
+import com.collabapps.moca.util.Constants;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.chip.Chip;
@@ -20,10 +19,6 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
-
-// TODO: Go to this page only the first time (use SharedPreferences)
-// TODO: Get all the user selected topics on a different thread
-// TODO: Store all selected topics in Firebase Database
 
 public class ChooseTopicsActivity extends AppCompatActivity {
 
@@ -70,7 +65,7 @@ public class ChooseTopicsActivity extends AppCompatActivity {
     }
 
     private void persistUserTopicChoiceToOnlineDatabase() {
-        mDb.child(googleUserAccountId).child("favTopics").setValue(getUserSelectedTopics()).addOnCompleteListener(new OnCompleteListener<Void>() {
+        mDb.child(googleUserAccountId).child(Constants.DATABASE_CHILD_FAV_TOPICS).setValue(getUserSelectedTopics()).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 navigateToHomeActivity();

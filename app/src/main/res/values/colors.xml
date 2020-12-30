@@ -16,6 +16,7 @@
     <color name="moca_primary_dark"> #B8334C </color>
     <color name="moca_primary_light"> #FF9BAB </color>
     <color name="moca_accent"> #8BDF8B </color>
+    <color name="moca_accent_dark"> #006510 </color>
 
     <!-- Material Chip colors -->
     <color name="chip_checked_bg_color">@color/moca_accent</color>

@@ -12,7 +12,7 @@
     <string name="user_auth_page_subtitle">
         A free tool for you, that brings all your favorite meetups in one place
     </string>
-    <string name="user_auth_page_button_signin"> Sign In </string>
+    <string name="user_auth_page_btn_signin"> Sign In </string>
 
     <!-- ChooseTopicsActivity  -->
     <string name="choose_topics_page_title"> Choose the topics you love the most </string>
@@ -47,5 +47,13 @@
     <string name="app_logo_imageView_contentDesc">app_logo</string>
     <string name="profile_photo_imageView_contentDesc">profile_photo</string>
     <string name="add_event_fab_contentDesc">add_event_fab</string>
+
+    <!-- Add Event Activity -->
+    <string name="add_event_page_toolbar_title">Add Event</string>
+    <string name="event_name_et_hint">Event Name</string>
+    <string name="event_date_et_hint">Date</string>
+    <string name="event_location_et_hint">Location</string>
+    <string name="event_desc_et_hint">Event Description</string>
+    <string name="add_event_page_btn">Add Event</string>
 
 </resources>

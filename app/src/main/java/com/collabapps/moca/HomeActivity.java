@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.collabapps.moca.adapters.EventPagerAdapter;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -18,6 +19,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
 public class HomeActivity extends AppCompatActivity {
@@ -76,7 +78,13 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void initAddEventFab() {
-        //TODO: Navigate to AddNewEventActivity
+        FloatingActionButton fab = findViewById(R.id.add_event_fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navigateToAddEventActivity();
+            }
+        });
     }
 
     private void initGoogleSignInOptions() {
@@ -124,5 +132,10 @@ public class HomeActivity extends AppCompatActivity {
     private void navigateToUserAuthActivity() {
         Intent userAuthActivityIntent = UserAuthActivity.getIntentToNavigate(this);
         startActivity(userAuthActivityIntent);
+    }
+
+    private void navigateToAddEventActivity() {
+        Intent addEventActivityIntent = AddEventActivity.getIntentToNavigate(this);
+        startActivity(addEventActivityIntent);
     }
 }

@@ -17,6 +17,13 @@ public class Event {
 
     }
 
+    public Event(String eventName, String eventDate, String eventLocation, String eventDesc) {
+        this.eventName = eventName;
+        this.eventDate = eventDate;
+        this.eventLocation = eventLocation;
+        this.eventDesc = eventDesc;
+    }
+
     public Event(String id, String eventName, String eventOrganiserName, String eventDate, String eventLocation, String eventDesc) {
         this.id = id;
         this.eventName = eventName;
@@ -78,5 +85,15 @@ public class Event {
         SimpleDateFormat sdf = new SimpleDateFormat("EEE, MMM d, HH:mm");
         String date = sdf.format(new Date());
         return eventDate == date;
+    }
+
+    @Override
+    public String toString() {
+        return "Event{" +
+                "eventName='" + eventName + '\'' +
+                ", eventDate='" + eventDate + '\'' +
+                ", eventLocation='" + eventLocation + '\'' +
+                ", eventDesc='" + eventDesc + '\'' +
+                '}';
     }
 }

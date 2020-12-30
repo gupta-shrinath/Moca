@@ -5,12 +5,12 @@ import requests
 import uuid
 from pymongo import MongoClient
 import time,os
-
+import boto
 app = Flask(__name__)
 
 # MongoDB Config
 mongodb_connection_string = os.environ.get('MONGODB_CONNECTION_URL')
-mongoClient = MongoClient(mongodb_connection_string)
+mongoClient = MongoClient(mongodb_connection_string,connect=False)
 db = mongoClient['moca']
 
 from meetup import routes

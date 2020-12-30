@@ -73,7 +73,7 @@
             app:srcCompat="@drawable/ic_event_location" />
 
         <TextView
-            android:id="@+id/event_date"
+            android:id="@+id/details_event_date"
             style="@style/TextAppearance.MaterialComponents.Body2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -85,7 +85,7 @@
             tools:text="@string/dummy_event_date" />
 
         <TextView
-            android:id="@+id/event_location"
+            android:id="@+id/details_event_location"
             style="@style/TextAppearance.MaterialComponents.Body2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -113,7 +113,7 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/event_location" />
+            app:layout_constraintTop_toBottomOf="@+id/details_event_location" />
 
         <TextView
             android:id="@+id/section_event_desc"

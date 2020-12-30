@@ -54,8 +54,8 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
             super(itemView);
             eventName = itemView.findViewById(R.id.event_name);
             eventOrganiserName = itemView.findViewById(R.id.event_organiser_name);
-            eventDate = itemView.findViewById(R.id.event_date);
-            eventLocation = itemView.findViewById(R.id.event_location);
+            eventDate = itemView.findViewById(R.id.details_event_date);
+            eventLocation = itemView.findViewById(R.id.details_event_location);
             event_item_cardView = itemView.findViewById(R.id.event_item_cardView);
 
             event_item_cardView.setOnClickListener(new View.OnClickListener() {

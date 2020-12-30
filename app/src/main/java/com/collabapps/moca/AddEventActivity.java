@@ -68,9 +68,7 @@ public class AddEventActivity extends AppCompatActivity {
     }
 
     private void displayFieldEmptySubmissionError() {
-        Toast  = Toast.makeText(this, "Please fill all fields before proceeding", Toast.LENGTH_LONG);
-        .getView().setBackgroundColor(getResources().getColor(R.color.moca_primary_dark));
-        .show();
+        Toast.makeText(this, "Please fill all fields before proceeding", Toast.LENGTH_LONG).show();
     }
 
     private Event getEventFromTextfields() {

@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -28,6 +29,8 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 public class UserAuthActivity extends AppCompatActivity {
+
+    private static final String TAG = "UserAuthActivity";
 
     private ProgressBar progressBar;
     private GoogleSignInClient mGoogleSignInClient;
@@ -91,7 +94,7 @@ public class UserAuthActivity extends AppCompatActivity {
                 handleUserDataPersistence(user);
             }
         } catch (ApiException e) {
-            toastErrorMessageWithStatusCode(e.getStatusCode());
+            Log.d(TAG, "handleSignInResult: " + e.printStackTrace());
         }
     }
 

@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.collabapps.moca.data.Event;
@@ -14,7 +15,6 @@ import com.collabapps.moca.data.Event;
 public class EventDetailsActivity extends AppCompatActivity {
 
     private Event event;
-    private ;
 
     public static final String EVENT_DETAILS_EXTRAS_KEY ="event_details_extras_key";
 
@@ -36,6 +36,7 @@ public class EventDetailsActivity extends AppCompatActivity {
         initToolbar();
         setupLiveEventIndicator();
         initJoinEventBtn();
+        populateEventData();
     }
 
     private void initToolbar() {
@@ -54,14 +55,37 @@ public class EventDetailsActivity extends AppCompatActivity {
         }
     }
 
-    private void initJoinEventBtn() {
+    private void populateEventData() {
+        TextView eventName = findViewById(R.id.details_event_name);
+        TextView eventOrganiserName = findViewById(R.id.details_event_organiser);
+        TextView eventDate = findViewById(R.id.details_event_date);
+        TextView eventLocation = findViewById(R.id.details_event_location);
+        TextView eventDesc = findViewById(R.id.details_event_desc);
 
+        eventName.setText(event.getEventName());
+        eventOrganiserName.setText(event.getEventOrganiserName());
+        eventDate.setText(event.getEventDate());
+        eventLocation.setText(event.getEventLocation());
+        eventDesc.setText(event.getEventDesc());
+    }
+
+    private void initJoinEventBtn() {
+        Button joinEventBtn = findViewById(R.id.join_event_btn);
+        joinEventBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickJoinEventBtn();
+            }
+        });
+    }
+
+    private void onClickJoinEventBtn() {
+        //TODO: Use a URI to take the user to the respective video calling app
     }
 
     private Event getEventFromIntent() {
         if (!getIntent().hasExtra(EVENT_DETAILS_EXTRAS_KEY)) {
             throw new IllegalStateException("Please use EventDetailsActivity.getIntentToNavigate()");
-            return null;
         }
         return (Event) getIntent().getExtras().get(EVENT_DETAILS_EXTRAS_KEY);
     }

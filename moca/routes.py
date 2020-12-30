@@ -12,3 +12,7 @@ def get_all_events():
 @app.route('/api/v1/resources/events/')
 def get_events():
     return Moca().get_events()
+
+@app.route('/api/v1/resources/add_event/')
+def get_moca_event():
+    return Moca().add_event()

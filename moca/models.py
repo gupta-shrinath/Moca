@@ -1,5 +1,6 @@
 from app import db
 from flask import jsonify,request
+import uuid
 
 class Moca:
     @staticmethod
@@ -32,3 +33,23 @@ class Moca:
             return jsonify(event_list)  
         else:
             return jsonify({'error':'No topic_id field provided. Please specify an topic_id.'})
+
+
+    @staticmethod
+    def add_event():
+        event = {
+            '_id':uuid.uuid4().hex,
+            'name':request.args['name'],
+            'description':request.args['description'],
+            'date':request.args['date'],
+            'time':request.args['time'],
+            'timezone':'Asia/Kolkata',
+            'platform_link':request.args['platform_link'],
+            'organization':request.args['organization'],
+            'organization_image':request.args['organization_image'],
+            'topic_id':request.args['topic_id']
+        }
+        if db.events.insert(event):
+            return {'status':'sucess'}
+        else:
+            return {'status':'fail'}

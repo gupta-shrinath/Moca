@@ -38,7 +38,12 @@ public class RecommendedEventsFragment extends Fragment implements EventAdapter.
         View view = inflater.inflate(R.layout.fragment_recommended_events, container, false);
 
         populateDummyData();
-        //setupRecyclerView();
+
+        /*
+        RecyclerView recommEventsRv = view.findViewById(R.id.recomm_events_rv);
+        recommEventsRv.setLayoutManager(new LinearLayoutManager(getActivity()));
+        EventAdapter eventAdapter = new EventAdapter(eventList, this);
+        recommEventsRv.setAdapter(eventAdapter); */
 
         return view;
     }
@@ -46,14 +51,17 @@ public class RecommendedEventsFragment extends Fragment implements EventAdapter.
     private void populateDummyData() {
         eventList = new ArrayList<>();
 
-        //fill some dummy data
+        eventList.add(new Event("Mastering Kotlin", "GDG MAD", "Sat, Dec 19, 11:00", "us04web.zoom.us/j/74212717789"));
+        eventList.add(new Event("Understanding Colors", "The UI/UX People", "Sat, Feb 13, 17:00", "meet.google.com/sqn-osgw-tyf"));
+        eventList.add(new Event("The Future of Jetpack", "Kotlin Mumbai", "Sat, Dec 26, 16:00", "Online, Microsoft Teams"));
+        eventList.add(new Event("Start Reacting", "Javascript Boston", "Sat, Feb 21, 15:00", "Idea Space, Boston, MA"));
+        eventList.add(new Event("Why Moshi is Better", "The Kotliners", "Sat, Mar 16, 12:00", "New York, NY"));
+        eventList.add(new Event("Swift all the way", "Swifters of Nashville", "Sat, Jan 5, 16:00", "Nashville, TN"));
+        eventList.add(new Event("The Era of Blockchain", "The Blockchain Club", "Sat, Apr 22, 13:00", "Charlotte, NC"));
     }
 
     private void setupRecyclerView() {
-        RecyclerView recommendedEventsRv = view.findViewById(R.id.recommended_events_recyclerView);
-        EventAdapter eventAdapter = new EventAdapter(eventList, this);
-        recommendedEventsRv.setAdapter(eventAdapter);
-        recommendedEventsRv.setLayoutManager(new LinearLayoutManager(view.getContext()));
+
     }
 
     @Override

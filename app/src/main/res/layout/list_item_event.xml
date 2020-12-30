@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/event_item_cardView"
@@ -29,9 +28,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                tools:text="@string/dummy_event_name"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@string/dummy_event_name" />
 
             <TextView
                 android:id="@+id/event_organiser_name"
@@ -39,9 +38,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                tools:text="@string/dummy_event_organiser_name"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/event_name" />
+                app:layout_constraintTop_toBottomOf="@+id/event_name"
+                tools:text="@string/dummy_event_organiser_name" />
 
             <ImageView
                 android:id="@+id/event_date_imageView"
@@ -49,10 +48,10 @@
                 android:layout_height="14dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
+                android:contentDescription="event_date"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/event_organiser_name"
-                app:srcCompat="@drawable/ic_event_date"
-                android:contentDescription="event_date" />
+                app:srcCompat="@drawable/ic_event_date" />
 
             <ImageView
                 android:id="@+id/event_location_imageView"
@@ -61,11 +60,11 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="2dp"
                 android:layout_marginBottom="8dp"
+                android:contentDescription="event_location"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/event_date_imageView"
-                app:srcCompat="@drawable/ic_event_location"
-                android:contentDescription="event_location" />
+                app:srcCompat="@drawable/ic_event_location" />
 
             <TextView
                 android:id="@+id/event_date"
@@ -73,11 +72,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                tools:text="@string/dummy_event_date"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="@+id/event_date_imageView"
                 app:layout_constraintStart_toEndOf="@+id/event_date_imageView"
-                app:layout_constraintTop_toTopOf="@+id/event_date_imageView" />
+                app:layout_constraintTop_toTopOf="@+id/event_date_imageView"
+                tools:text="@string/dummy_event_date" />
 
             <TextView
                 android:id="@+id/event_location"
@@ -85,11 +84,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                tools:text="@string/dummy_event_location"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="@+id/event_location_imageView"
                 app:layout_constraintStart_toEndOf="@+id/event_location_imageView"
-                app:layout_constraintTop_toTopOf="@+id/event_location_imageView" />
+                app:layout_constraintTop_toTopOf="@+id/event_location_imageView"
+                tools:text="@string/dummy_event_location" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

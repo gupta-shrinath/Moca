@@ -94,7 +94,7 @@ public class UserAuthActivity extends AppCompatActivity {
                 handleUserDataPersistence(user);
             }
         } catch (ApiException e) {
-            Log.d(TAG, "handleSignInResult: " + e.printStackTrace());
+            e.printStackTrace();
         }
     }
 

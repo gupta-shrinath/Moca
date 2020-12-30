@@ -44,6 +44,12 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
+    // OkHttp Library
+    implementation("com.squareup.okhttp3:okhttp:4.9.0")
+
+    // Gson Library for json parsing
+    implementation 'com.google.code.gson:gson:2.8.6'
+
     // Using Firebase BoM for the Firebase platform
     // This implicitly adds all relevant version numbers for all firebase libraries
     implementation platform('com.google.firebase:firebase-bom:26.2.0')

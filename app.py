@@ -1,8 +1,9 @@
 from flask import Flask,jsonify,request
+from apscheduler.schedulers.background import BackgroundScheduler
+from apscheduler.executors.pool import ThreadPoolExecutor, ProcessPoolExecutor
 import requests
 import uuid
 from pymongo import MongoClient
-import schedule
 import time
 
 app = Flask(__name__)
@@ -24,8 +25,12 @@ def get_events_from_sources():
     Galvanize.get_events_details()   
     print('Scheduler Completed')
 
-schedule.every(10).seconds.do(get_events_from_sources())
+executors = {
+    'default': ThreadPoolExecutor(16),
+    'processpool': ProcessPoolExecutor(4)
+}
+sched = BackgroundScheduler(timezone='Asia/Kolkata', executors=executors)
 
-while True:
-    schedule.run_pending()
-    time.sleep(1)
+sched.add_job(get_events_from_sources, 'cron', day_of_week=0)
+sched.start()
+

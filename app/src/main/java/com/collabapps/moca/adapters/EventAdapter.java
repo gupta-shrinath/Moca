@@ -37,7 +37,12 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
         holder.setEventName(eventList.get(position).getEventName());
         holder.setEventOrganiserName(eventList.get(position).getEventOrganiserName());
         holder.setEventDate(eventList.get(position).getEventDate());
-        holder.setEventLocation(eventList.get(position).getEventVenue().getAddress());
+
+        if (eventList.get(position).getEventVenue() != null) {
+            holder.setEventLocation(eventList.get(position).getEventVenue().getAddress());
+        } else {
+            holder.setEventLocation("Unknown");
+        }
     }
 
     @Override

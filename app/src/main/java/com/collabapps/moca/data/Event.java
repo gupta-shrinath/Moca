@@ -6,6 +6,7 @@ import android.os.Parcelable;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -33,6 +34,9 @@ public class Event implements Parcelable {
     @SerializedName("platform_link")
     private String eventLocation;
 
+    @SerializedName("is_event_online")
+    private boolean isEventOnline;
+
     @SerializedName("description")
     private String eventDesc;
 
@@ -50,6 +54,7 @@ public class Event implements Parcelable {
         this.eventLocation = eventLocation;
     }
 
+
     protected Event(Parcel in) {
         topicId = in.readString();
         eventName = in.readString();
@@ -58,6 +63,7 @@ public class Event implements Parcelable {
         eventDate = in.readString();
         eventTime = in.readString();
         eventLocation = in.readString();
+        isEventOnline = in.readByte() != 0;
         eventDesc = in.readString();
     }
 
@@ -106,27 +112,24 @@ public class Event implements Parcelable {
     }
 
     public String getEventDate() {
-        return eventDate;
-    }
+        String formEventDate = "";
 
-    public void setEventDate(String eventDate) {
-        this.eventDate = eventDate;
+        try {
+            Date date = new SimpleDateFormat("yyyy-MM-dd").parse(eventDate);
+            SimpleDateFormat sdf = new SimpleDateFormat("E, MMM dd");
+            formEventDate = sdf.format(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return formEventDate + ", " + eventTime;
     }
 
     public String getEventTime() {
-        return eventTime;
-    }
-
-    public void setEventTime(String eventTime) {
-        this.eventTime = eventTime;
+        return eventTime.substring(0, eventTime.lastIndexOf(":"));
     }
 
     public String getEventLocation() {
         return eventLocation;
-    }
-
-    public void setEventLocation(String eventLocation) {
-        this.eventLocation = eventLocation;
     }
 
     public String getEventDesc() {
@@ -171,6 +174,7 @@ public class Event implements Parcelable {
         dest.writeString(eventDate);
         dest.writeString(eventTime);
         dest.writeString(eventLocation);
+        dest.writeByte((byte) (isEventOnline ? 1 : 0));
         dest.writeString(eventDesc);
     }
 

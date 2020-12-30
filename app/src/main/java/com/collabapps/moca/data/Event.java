@@ -1,10 +1,13 @@
 package com.collabapps.moca.data;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class Event {
+public class Event implements Parcelable {
 
     private String id;
     private String eventName;
@@ -32,6 +35,27 @@ public class Event {
         this.eventLocation = eventLocation;
         this.eventDesc = eventDesc;
     }
+
+    protected Event(Parcel in) {
+        id = in.readString();
+        eventName = in.readString();
+        eventOrganiserName = in.readString();
+        eventDate = in.readString();
+        eventLocation = in.readString();
+        eventDesc = in.readString();
+    }
+
+    public static final Creator<Event> CREATOR = new Creator<Event>() {
+        @Override
+        public Event createFromParcel(Parcel in) {
+            return new Event(in);
+        }
+
+        @Override
+        public Event[] newArray(int size) {
+            return new Event[size];
+        }
+    };
 
     public String getId() {
         return id;
@@ -95,5 +119,20 @@ public class Event {
                 ", eventLocation='" + eventLocation + '\'' +
                 ", eventDesc='" + eventDesc + '\'' +
                 '}';
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(id);
+        dest.writeString(eventName);
+        dest.writeString(eventOrganiserName);
+        dest.writeString(eventDate);
+        dest.writeString(eventLocation);
+        dest.writeString(eventDesc);
     }
 }

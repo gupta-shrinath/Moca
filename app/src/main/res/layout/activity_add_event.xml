@@ -6,8 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".AddEventActivity">
 
-    <!-- TODO: Make the toolbar text white -->
-
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/add_event_toolbar"
         android:layout_width="match_parent"

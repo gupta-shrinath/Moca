@@ -36,6 +36,11 @@
     <string name="dummy_event_organiser_name">GDG MAD</string>
     <string name="dummy_event_date">Sat, Dec 19, 11:00</string>
     <string name="dummy_event_location">Online, Google Meet</string>
+    <string name="dummy_event_desc">
+        Agenda (IST): 04:00 PM - Exploring the future of Android UI with Jetpack Compose with Gurupreet Singh <br></br><br></br> Jetpack Compose is Android’s modern toolkit for building native UI. It simplifies and accelerates UI development on Android. Quickly bring your app to life with less code, powerful tools, and intuitive Kotlin APIs.<br></br><br></br> In this talk, we will be going through how far have we come with existing UI tools and what challenges it presented and why something like Jetpack Compose is needed.
+        We will learn how Jetpack Compose accelerates Android App development by creating a complex app UI in a few lines of codes. While making app we will go through core concepts of Jetpack Compose and how it handles state management, rendering, performance and how Kotlin compliments compose.<br></br>
+        At last, we will see how Compose can be adopted to our current projects and how soon we can be ready for production apps with Compose.<br></br><br></br>About the speaker: Gurupreet is an open-source enthusiast, Developer and Tech Entrepreneur. Currently, he's working at Delivery Hero as an Android Developer. Actively working currently in Jetpack Compose, Blockchain and Android development.
+    </string>
     <string name="event_date_imageView_contentDesc">event_date_icon</string>
     <string name="event_location_imageView_contentDesc">event_location_icon</string>
 
@@ -56,4 +61,8 @@
     <string name="event_desc_et_hint">Event Description</string>
     <string name="add_event_page_btn">Add Event</string>
 
+    <!-- Event Details Activity -->
+    <string name="event_details_liveEvent">Event is live now</string>
+    <string name="section_event_desc">Description</string>
+    <string name="join_event_btn">Join Online Event</string>
 </resources>

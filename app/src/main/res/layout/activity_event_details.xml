@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".EventDetailsActivity">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/event_details_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/moca_primary"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/event_organiser_imageView"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/event_details_toolbar"
+            app:srcCompat="@drawable/sample_event_organiser" />
+
+        <TextView
+            android:id="@+id/details_event_name"
+            style="@style/TextAppearance.MaterialComponents.Headline6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toEndOf="@+id/event_organiser_imageView"
+            app:layout_constraintTop_toBottomOf="@+id/event_details_toolbar"
+            tools:text="@string/dummy_event_name" />
+
+        <TextView
+            android:id="@+id/details_event_organiser"
+            style="@style/TextAppearance.AppCompat.Body2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            app:layout_constraintStart_toEndOf="@+id/event_organiser_imageView"
+            app:layout_constraintTop_toBottomOf="@+id/details_event_name"
+            tools:text="@string/dummy_event_organiser_name" />
+
+        <ImageView
+            android:id="@+id/event_date_imageView"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:contentDescription="event_date"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/details_event_organiser"
+            app:srcCompat="@drawable/ic_event_date" />
+
+        <ImageView
+            android:id="@+id/event_location_imageView"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="16dp"
+            android:contentDescription="event_location"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/event_date_imageView"
+            app:srcCompat="@drawable/ic_event_location" />
+
+        <TextView
+            android:id="@+id/event_date"
+            style="@style/TextAppearance.MaterialComponents.Body2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/event_date_imageView"
+            app:layout_constraintStart_toEndOf="@+id/event_date_imageView"
+            app:layout_constraintTop_toTopOf="@+id/event_date_imageView"
+            tools:text="@string/dummy_event_date" />
+
+        <TextView
+            android:id="@+id/event_location"
+            style="@style/TextAppearance.MaterialComponents.Body2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/event_location_imageView"
+            app:layout_constraintStart_toEndOf="@+id/event_location_imageView"
+            app:layout_constraintTop_toTopOf="@+id/event_location_imageView"
+            tools:text="@string/dummy_event_location" />
+
+        <TextView
+            android:id="@+id/live_event_indicator"
+            style="@style/TextAppearance.MaterialComponents.Overline"
+            android:layout_width="0dp"
+            android:layout_height="27dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:visibility="gone"
+            android:background="@drawable/bg_live_event"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="@string/event_details_liveEvent"
+            android:textColor="@color/moca_primary_dark"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/event_location" />
+
+        <TextView
+            android:id="@+id/section_event_desc"
+            style="@style/TextAppearance.MaterialComponents.Headline5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/section_event_desc"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/live_event_indicator" />
+
+        <TextView
+            android:id="@+id/details_event_desc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/section_event_desc"
+            tools:text="@string/dummy_event_desc" />
+
+        <Button
+            android:id="@+id/join_event_btn"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:backgroundTint="@color/moca_accent"
+            android:text="@string/join_event_btn"
+            android:textColor="@color/moca_accent_dark"
+            android:textSize="22sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

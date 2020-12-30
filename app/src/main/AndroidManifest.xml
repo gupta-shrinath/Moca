@@ -11,6 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Moca">
+        <activity android:name=".EventDetailsActivity"></activity>
         <activity
             android:name=".AddEventActivity"
             android:parentActivityName=".HomeActivity" />

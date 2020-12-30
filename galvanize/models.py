@@ -5,6 +5,7 @@ import json
 import pytz
 import datetime
 import uuid
+from boto.s3.connection import S3Connection
 class Galvanize:
 
     # Get all eventbrite events url and topic
@@ -48,7 +49,7 @@ class Galvanize:
         event_count = 0
         for event_id in event_ids:
             url = 'https://www.eventbriteapi.com/v3/events/'+event_id+'/?expand=organizer'
-            PERSONAL_OAUTH_TOKEN = "W43MZVDX2EYFUZENUUHX"
+            PERSONAL_OAUTH_TOKEN = os.environ.get('EVENTBRITE_OAUTH_PERSONAL_TOKEN')
             header = {'Authorization': 'Bearer ' + PERSONAL_OAUTH_TOKEN}
             response = requests.get(url,headers=header)
             response = response.json()

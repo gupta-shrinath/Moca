@@ -4,12 +4,13 @@ from apscheduler.executors.pool import ThreadPoolExecutor, ProcessPoolExecutor
 import requests
 import uuid
 from pymongo import MongoClient
-import time
+import time,os
 
 app = Flask(__name__)
 
 # MongoDB Config
-mongoClient = MongoClient('mongodb+srv://mocaadmin:7HvziBoPYL2qpFln@cluster0.be0cl.mongodb.net/test')
+mongodb_connection_string = os.environ.get('MONGODB_CONNECTION_URL')
+mongoClient = MongoClient(mongodb_connection_string)
 db = mongoClient['moca']
 
 from meetup import routes

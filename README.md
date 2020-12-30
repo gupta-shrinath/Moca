@@ -10,41 +10,21 @@ Meetup and Online/Offline Conferences Aggregator - One app, many events.
 - MOCA also allows its users to add their own event details for COMPLETELY FREE!
     - [meetup.com](http://meetup.com) charges users to add meetups*
 
+- [Video Explaination](https://www.youtube.com/watch?v=12SXe2hJY6g&feature=youtu.be)
+
+- [Presentation](https://docs.google.com/presentation/d/1L0GScW2bnRM326qnDd95wO6NSB3O6cWJtCRXSClF_t4/edit?ts=5fe98947)
+
 ## Technical Details
 - Backend
     - Flask (Python)
     - MongoDB (Database)
-    - Third-Party APIs
+    - Third-Party 
         - Meetup
         - Eventbrite
-        - Twitter (future)
+        - Galvanize
     - Firebase (User Auth)
 - Frontend
     - Android (Framework)
         - Language: Java
 - Design Tool
     - [Figma](https://www.figma.com/file/b8Rk7fIZgF68cJZPMk5Uvd/HackNagpur-MOCA?node-id=0%3A1)
-- Workspace Managment 
-    - [Notion](https://www.notion.so/HackNagpur-MOCA-49e927c805284e31b42c925956494c2a)
-
-## Topics
-
-- Tech
-    - iOS
-        - Swift
-    - Android
-        - Java
-        - Kotlin
-    - AI/ML
-        - Tensorflow
-        - Scikit-Learn
-        - Python
-        - R
-        - Julia
-    - Web
-        - Javascript
-            - React
-            - Vue
-            - Angular
-    - AR/VR
-        - EchoAR

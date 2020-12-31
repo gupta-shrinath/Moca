@@ -1,6 +1,8 @@
 # Moca
 Meetup and Online/Offline Conferences Aggregator - One app, many events.
 
+## Reason of Delay
+Our work was done, I (Gupta Shrinath) lost the internet connection at around 12 midnight due to which the pull request was not merged and repo was private 
 ## Problem Statement
 - The average user is usually unaware of on-going professional events in their area or globally. For being completely aware, the user is required to keep themselves updated using various different platforms which are difficult to manage and keep up with.
 

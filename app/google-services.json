@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1005735982925",
+    "project_id": "moca-events-app",
+    "storage_bucket": "moca-events-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1005735982925:android:a326717deb0456ff5b6904",
+        "android_client_info": {
+          "package_name": "com.collabapps.moca"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1005735982925-aa589ef2ikhogommtgtmmh1dqprh23uh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.collabapps.moca",
+            "certificate_hash": "a64f9190c65142fdef22a3d430323559c1595d03"
+          }
+        },
+        {
+          "client_id": "1005735982925-sbv91r9l3abe4dss11lcgeq3iud2rhq5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLm0BjxUNRXXY0rbCJiMjma9mkd7bomR8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1005735982925-sbv91r9l3abe4dss11lcgeq3iud2rhq5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
